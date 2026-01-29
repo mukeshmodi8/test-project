@@ -20,80 +20,63 @@ const distributors = Array.from({ length: 4 }, (_, i) => ({
 }));
 
 const TableHeader = ({ title, iconSrc }) => (
-    <div className="flex justify-between items-center px-5 py-3 bg-white">
+    <div className="flex justify-between items-center px-4 py-3 bg-white border-b border-gray-50">
         <div className="flex items-center gap-2">
-            <div className="w-5 h-5 flex items-center justify-center">
+            <div className="w-5 h-5 flex items-center justify-center shrink-0">
                 <img src={iconSrc} alt="" className="w-full h-full object-contain" />
             </div>
-            <h3 className="text-sm font-semibold text-gray-700">{title}</h3>
+            <h3 className="text-sm font-semibold text-gray-700 whitespace-nowrap">{title}</h3>
         </div>
-        <div className="flex items-center gap-3">
-            <button className="text-gray-400 hover:text-gray-600">
-                <img src="menu.svg" alt="" />
+        <div className="flex items-center gap-2 sm:gap-3">
+            <button className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors">
+                <img src="menu.svg" alt="menu" className="w-5 h-5" />
             </button>
-            <div className="flex items-center gap-1.5 border rounded-[40px] px-2 py-1 text-[10px] text-gray-200 font-medium bg-white shadow-sm">
-                <img src="Iconss.svg" alt="" />
-                <span className="text-gray-500">2025</span>
+            <div className="flex items-center gap-1.5 border rounded-full px-3 py-1 text-[11px] text-gray-500 font-medium bg-white shadow-sm border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors">
+
+                <img src="Iconss.svg" alt="calendar" className="w-3 h-3" />
+                <span>2025</span>
             </div>
+
         </div>
     </div>
 );
 
 const ManufacturersDistributorPage = () => {
     return (
-        <div className="bg-[#FFFFFF] p-4 md:p-6 min-h-screen font-sans">
-            <div className="max-w-[1600px] mx-auto space-y-6">
+        <div className="bg-[#F9FAFB] w-full min-h-screen font-sans">
+            <div className="w-full max-w-full lg:max-w-[1600px] mx-auto p-3 sm:p-4 md:p-6 space-y-6">
 
-                {/* Manufacturers Table */}
+                {/* ================= MANUFACTURERS ================= */}
                 <div className="bg-white rounded-[16px] border border-gray-200 shadow-sm overflow-hidden">
-                    <TableHeader
-                        title="Manufacturers"
-                        iconSrc="/Icons1.svg"
-                    />
-                    <div className="px-5 pb-4 text-[14px] overflow-x-auto">
-                        <table className="w-full text-left border-separate border-spacing-0">
+                    <TableHeader title="Manufacturers" iconSrc="/Icons1.svg" />
+
+                    <div className="overflow-x-auto no-scrollbar">
+                        <table className="w-full min-w-[800px] text-left border-separate border-spacing-0">
                             <thead className="bg-[#BE202E] text-white">
                                 <tr>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider rounded-tl-[8px]">#</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider">Manufacturer ID</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider">Manufacturer Name</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider">Email</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider">Phone No.</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider">Location</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider text-right rounded-tr-[8px]">Action</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">#</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">Manufacturer ID</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">Name</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">Email</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">Phone No.</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">Location</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase text-center">Action</th>
                                 </tr>
                             </thead>
-                            <tbody className="border-x border-b border-gray-100">
+
+                            <tbody className="divide-y divide-gray-50">
                                 {manufacturers.map((m) => (
-                                    <tr key={m.id} className="hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0">
-                                        <td className="px-3 py-2 text-[10px] text-gray-500">
-                                            <div className="flex items-center gap-1.5">
-                                                <svg className="w-2 h-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-                                                {m.id}
-                                            </div>
-                                        </td>
-                                        <td className="px-3 py-2 text-[14px] font-bold text-gray-800">{m.mid}</td>
-                                        <td className="px-3 py-2 text-[14px] text-gray-600">{m.name}</td>
-                                        <td className="px-3 py-2 text-[14px] text-gray-600">{m.email}</td>
-                                        <td className="px-3 py-2 text-[14px] text-gray-600">{m.phone}</td>
-                                        <td className="px-3 py-2 text-[14px] text-gray-600">{m.location}</td>
+                                    <tr key={m.id} className="hover:bg-gray-50 transition-colors">
+                                        <td className="px-3 py-2 text-[11px] text-gray-500">{m.id}</td>
+                                        <td className="px-3 py-2 text-[12px] font-semibold text-gray-800">{m.mid}</td>
+                                        <td className="px-3 py-2 text-[12px] text-gray-600">{m.name}</td>
+                                        <td className="px-3 py-2 text-[12px] text-gray-600">{m.email}</td>
+                                        <td className="px-3 py-2 text-[12px] text-gray-600">{m.phone}</td>
+                                        <td className="px-3 py-2 text-[12px] text-gray-600">{m.location}</td>
                                         <td className="px-3 py-2 text-center">
                                             <div className="flex justify-center gap-2">
-                                                <button className="hover:opacity-80 text-[#4D4D4]">
-                                                    <img
-                                                        src="/Vector.svg"
-                                                        alt="edit"
-                                                        className="w-4 h-4"
-                                                    />
-                                                </button>
-                                                <button className="hover:opacity-80 ">
-                                                    <img
-                                                        src="/Iconsdet.svg"
-                                                        alt="delete"
-                                                        className="w-6 h-7 text-[#4D4D4D]"
-                                                    />
-                                                </button>
-
+                                                <button><img src="/Vector.svg" className="w-3.5 h-3.5" /></button>
+                                                <button><img src="/Iconsdet.svg" className="w-4 h-4" /></button>
                                             </div>
                                         </td>
                                     </tr>
@@ -101,76 +84,54 @@ const ManufacturersDistributorPage = () => {
                             </tbody>
                         </table>
                     </div>
+
                 </div>
 
-                {/* Distributor Table */}
+                {/* ================= DISTRIBUTORS ================= */}
                 <div className="bg-white rounded-[16px] border border-gray-200 shadow-sm overflow-hidden">
-                    <TableHeader
-                        title="Distributor"
-                        iconSrc="/Icons3.svg"
-                    />
-                    <div className="px-5 pb-4 overflow-x-auto">
-                        <table className="w-full text-left border-separate border-spacing-0">
+                    <TableHeader title="Distributor" iconSrc="/Icons3.svg" />
+
+                    <div className="overflow-x-auto no-scrollbar">
+                        <table className="w-full min-w-[900px] text-left border-separate border-spacing-0">
                             <thead className="bg-[#BD2831] text-white">
                                 <tr>
-                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider rounded-tl-[8px]">#</th>
-                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Distributor ID</th>
-                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Distributor Name</th>
-                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Registration No.</th>
-                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Email</th>
-                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Phone No.</th>
-                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Status</th>
-                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider text-center rounded-tr-[8px]">Action</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">#</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">Distributor ID</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">Name</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">Reg No.</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">Email</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">Phone No.</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase">Status</th>
+                                    <th className="px-3 py-2 text-[10px] font-semibold uppercase text-center">Action</th>
                                 </tr>
                             </thead>
-                            <tbody className="border-x border-b border-gray-100">
+
+                            <tbody className="divide-y divide-gray-50">
                                 {distributors.map((d) => (
-                                    <tr key={d.id} className="hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0">
-                                        <td className="px-3 py-2 text-[10px] text-gray-500">
-                                            <div className="flex items-center gap-1.5">
-                                                <svg className="w-2 h-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-                                                {d.id}
-                                            </div>
-                                        </td>
-                                        <td className="px-3 py-2 text-[14px] font-bold text-gray-800">{d.did}</td>
-                                        <td className="px-3 py-2 text-[14px] text-gray-600">{d.name}</td>
-                                        <td className="px-3 py-2 text-[14px] text-gray-600">{d.reg}</td>
-                                        <td className="px-3 py-2 text-[14px] text-gray-600">{d.email}</td>
-                                        <td className="px-3 py-2 text-[14px] text-gray-600">{d.phone}</td>
+                                    <tr key={d.id} className="hover:bg-gray-50 transition-colors">
+                                        <td className="px-3 py-2 text-[11px] text-gray-500">{d.id}</td>
+                                        <td className="px-3 py-2 text-[12px] font-semibold text-gray-800">{d.did}</td>
+                                        <td className="px-3 py-2 text-[12px] text-gray-600">{d.name}</td>
+                                        <td className="px-3 py-2 text-[12px] text-gray-600">{d.reg}</td>
+                                        <td className="px-3 py-2 text-[12px] text-gray-600">{d.email}</td>
+                                        <td className="px-3 py-2 text-[12px] text-gray-600">{d.phone}</td>
                                         <td className="px-3 py-2">
-                                            <span className="inline-block px-3 py-0.5 rounded-full text-[9px] font-bold bg-[#EBF5FF] text-[#3B82F6] border border-blue-100">
+                                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-semibold bg-blue-50 text-blue-600 border border-blue-100">
                                                 {d.status}
                                             </span>
                                         </td>
                                         <td className="px-3 py-2 text-center">
                                             <div className="flex justify-center gap-2">
-
-                                                {/* EDIT */}
-                                                <button className="hover:opacity-80">
-                                                    <img
-                                                        src="/icons11.svg"
-                                                        alt="edit"
-                                                        className="w-4 h-4"
-                                                    />
-                                                </button>
-
-                                                {/* DELETE */}
-                                                <button className="hover:opacity-80">
-                                                    <img
-                                                        src="/delet.svg"
-                                                        alt="delete"
-                                                        className="w-4 h-4"
-                                                    />
-                                                </button>
-
+                                                <button><img src="/icons11.svg" className="w-3.5 h-3.5" /></button>
+                                                <button><img src="/delet.svg" className="w-3.5 h-3.5" /></button>
                                             </div>
                                         </td>
-
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     </div>
+
                 </div>
 
             </div>

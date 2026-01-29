@@ -4,34 +4,34 @@ import ProductionChart from "../../assets/Components/charts/ProductionChart";
 
 
 const stats = [
-  {
-    label: "Total Production",
-    val: "10,000",
-    up: true,
-    icon: "/Icons.svg",
-    change: "5% more than last month",
-  },
-  {
-    label: "Total Manufacturer",
-    val: "420",
-    up: true,
-    icon: "/Icons1.svg",
-    change: "5% more than last month",
-  },
-  {
-    label: "Total Distributor",
-    val: "12",
-    up: false,
-    icon: "/Icons3.svg",
-    change: "5% less than last month",
-  },
-  {
-    label: "Total Farmers Served",
-    val: "250",
-    up: false,
-    icon: "/Icons5.svg",
-    change: "5% less than last month",
-  },
+    {
+        label: "Total Production",
+        val: "10,000",
+        up: true,
+        icon: "/Icons.svg",
+        change: "5% more than last month",
+    },
+    {
+        label: "Total Manufacturer",
+        val: "420",
+        up: true,
+        icon: "/Icons1.svg",
+        change: "5% more than last month",
+    },
+    {
+        label: "Total Distributor",
+        val: "12",
+        up: false,
+        icon: "/Icons3.svg",
+        change: "5% less than last month",
+    },
+    {
+        label: "Total Farmers Served",
+        val: "250",
+        up: false,
+        icon: "/Icons5.svg",
+        change: "5% less than last month",
+    },
 ];
 
 
@@ -76,27 +76,36 @@ const ProjectStatsPage = () => {
                                 <CarbonOffsetChart />
                             </div>
                         </div>
-                        <div className="col-span-12 lg:col-span-5 grid grid-cols-2 gap-6">
+                        <div className="col-span-12 lg:col-span-5 grid grid-cols-2 gap-4 sm:gap-6">
                             {[
-                                { value: "20,000t", label: "Forecast Carbon", icon: "/Frame 793.svg" },
-                                { value: "15,000t", label: "Actual Carbon", icon: "/Group.svg" },
+                                { value: "20,000", label: "Forecast Carbon", icon: "/Frame 793.svg" },
+                                { value: "15,000", label: "Actual Carbon", icon: "/Group.svg" },
                             ].map((c) => (
                                 <div
                                     key={c.label}
                                     className="bg-white border border-[#E5E7EB] rounded-[16px] overflow-hidden flex flex-col"
                                 >
-                                    <div className="flex-1 flex flex-col items-center justify-center py-5">
-                                        <h3 className="text-[36px] font-medium">{c.value}</h3>
-                                        <p className="text-sm text-[#9CA3AF]">CO2eq</p>
+                                    {/* VALUE */}
+                                    <div className="flex-1 flex flex-col items-center justify-center py-4 sm:py-5">
+                                        <h3 className="text-[22px] sm:text-[26px] md:text-[30px] font-semibold text-gray-800 leading-none">
+                                            {c.value}
+                                            <span className="text-[14px] sm:text-[16px] font-medium ml-1">t</span>
+                                        </h3>
+
+                                        <p className="text-[11px] sm:text-xs text-[#9CA3AF] mt-1">
+                                            CO₂eq
+                                        </p>
                                     </div>
 
-                                    <div className="bg-[#BE202E] text-white h-[48px] flex items-center justify-center gap-2 text-sm font-medium">
+                                    {/* FOOTER */}
+                                    <div className="bg-[#BE202E] text-white h-[42px] sm:h-[48px] flex items-center justify-center gap-2 text-xs sm:text-sm font-medium">
                                         <img src={c.icon} alt="" className="w-4 h-4" />
                                         {c.label}
                                     </div>
                                 </div>
                             ))}
                         </div>
+
 
                     </div>
                 </div>
@@ -152,30 +161,37 @@ const ProjectStatsPage = () => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* PRODUCTION */}
                     <div className="bg-white border border-[#E5E7EB] rounded-[24px] p-8">
                         <div className="flex justify-between mb-4">
-                            <h3 className="font-semibold flex items-center gap-2">
-                                <img src="/Icons.svg" alt="" /> Production
+                            <h3 className="font-semibold flex items-center gap-2 text-[#202020]">
+                                <img src="/Icons.svg" alt="" className="opacity-60" />
+                                Production
                             </h3>
-                            <span className="text-xs border border-[#E5E7EB] px-3 py-1 rounded-lg flex items-center gap-2">
-                                <img src="/Frame 415.svg" alt="" /> 2025
+                            <span className="text-xs px-3 py-1 rounded-lg flex items-center gap-2 text-gray-500 bg-gray-50">
+                                <img src="/Frame 415.svg" alt="" className="opacity-60" />
+                                2025
                             </span>
                         </div>
                         <ProductionChart />
                     </div>
 
+                    {/* DISTRIBUTOR ORDERS */}
                     <div className="bg-white border border-[#E5E7EB] rounded-[24px] p-8">
                         <div className="flex justify-between mb-4">
-                            <h3 className="font-semibold flex items-center gap-2">
-                                <img src="/Icons3.svg" alt="" /> Distributor Orders
+                            <h3 className="font-semibold flex items-center gap-2 text-[#202020]">
+                                <img src="/Icons3.svg" alt="" className="opacity-60" />
+                                Distributor Orders
                             </h3>
-                            <span className="text-xs border border-[#E5E7EB] px-3 py-1 rounded-lg flex items-center gap-2">
-                                <img src="/Frame 415.svg" alt="" /> 2025
+                            <span className="text-xs px-3 py-1 rounded-lg flex items-center gap-2 text-gray-500 bg-gray-50  ">
+                                <img src="/Frame 415.svg" alt="" className="opacity-60" />
+                                2025
                             </span>
                         </div>
                         <DistributorOrdersChart />
                     </div>
                 </div>
+
 
             </div>
         </div>

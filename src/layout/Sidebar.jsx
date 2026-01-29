@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const menuItems = [
@@ -6,7 +6,7 @@ const menuItems = [
   { name: "Project", path: "/projects", icon: "/sidebar_icons2.svg" },
   { name: "Farmers", path: "/farmers", icon: "/sidebar_icons3.svg" },
   { name: "Carbon Credits", path: "/Carbon", icon: "/sidebar_icons4.svg" },
-  { name: "customers", path: "/customers", icon: "/sidebar_icons5.svg" },
+  { name: "Customers", path: "/customers", icon: "/sidebar_icons5.svg" },
   { name: "Retirement", path: "/Retirement", icon: "/sidebar_icons6.svg" },
   { name: "VVB", path: "/carbon-credits", icon: "/sidebar_icons7.svg" },
   { name: "User", path: "/User", icon: "/sidebar_icons8.svg" },
@@ -14,84 +14,101 @@ const menuItems = [
   { name: "Master", path: "/master", icon: "/sidebar_icons10.svg" },
 ];
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+const Sidebar = ({ isOpen, setIsOpen }) => {
+  const scrollRef = useRef(null);
 
-  const toggleSidebar = () => setIsOpen(!isOpen);
+  // मोबाइल पर बाहर क्लिक करने पर बंद करने के लिए
+  const handleClose = () => {
+    if (window.innerWidth < 1024) {
+      setIsOpen(false);
+    }
+  };
 
   const linkClass = ({ isActive }) =>
-    `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300
-     ${isActive ? "bg-red-50 text-red-600" : "text-gray-600 hover:bg-gray-100"}`;
+    `flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300
+     ${isActive ? "bg-red-50 text-red-600 shadow-sm" : "text-[#202020] hover:bg-gray-100"}`;
 
   return (
     <>
-      {/* Mobile Overlay */}
+      {/* MOBILE OVERLAY */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[80] lg:hidden"
-          onClick={toggleSidebar}
-        ></div>
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[80] lg:hidden transition-opacity"
+          onClick={handleClose}
+        />
       )}
 
-      <div className="relative flex h-screen overflow-hidden">
-        {/* Toggle Button */}
-        <button
-          onClick={toggleSidebar}
-          className={`fixed top-6 z-[100] bg-white rounded-full shadow-lg transition-all duration-300 border border-gray-100 p-1 
-            ${isOpen ? "left-[215px] lg:left-[225px]" : "left-4"}`}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 20 20"
-            className={`text-red-600 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-          >
-            <path
-              fill="currentColor"
-              d="M10 20A10 10 0 1 0 0 10a10 10 0 0 0 10 10zM8.711 4.3l5.7 5.766L8.7 15.711l-1.4-1.422 4.289-4.242-4.3-4.347z"
-            />
-          </svg>
-        </button>
+      <aside
+        className={`fixed top-0 bottom-0 left-0 bg-white border-r border-gray-100 shadow-xl lg:shadow-none z-[90] transition-all duration-300 ease-in-out
+        ${isOpen ? "translate-x-0 w-[240px]" : "-translate-x-full lg:translate-x-0 lg:w-0"}
+        flex flex-col overflow-hidden`}
+      >
+        {/* LOGO SECTION */}
+        <div className="p-5 h-20 flex items-center shrink-0 border-b border-gray-50">
+          <img src="/Logo.svg" className="h-8 object-contain" alt="logo" />
+        </div>
 
-        {/* Sidebar */}
-        <aside
-          className={`bg-white border-r border-gray-100 h-screen flex flex-col transition-all duration-300 shadow-sm z-[90] fixed top-0 bottom-0
-            ${isOpen ? "translate-x-0 w-[240px]" : "-translate-x-full w-0"}`}
+        {/* SCROLLABLE MENU AREA */}
+        <div
+          ref={scrollRef}
+          className="flex-1 overflow-y-auto no-scrollbar px-3 py-4 flex flex-col justify-between"
         >
-          {/* Logo Section */}
-          <div className="p-5 flex items-center h-20 shrink-0">
-            <img src="/Logo.svg" className="h-8 object-contain" alt="Logo" />
-          </div>
-
-          {/* Navigation Links */}
-          <nav className="flex-1 overflow-y-auto px-3 space-y-1 mt-2 no-scrollbar scroll-smooth">
+          {/* Main Navigation */}
+          <nav className="space-y-1">
             {menuItems.map((item) => (
               <NavLink
                 key={item.name}
                 to={item.path}
                 end={item.path === "/"}
-                onClick={() => window.innerWidth < 1024 && setIsOpen(false)}
+                onClick={handleClose}
                 className={linkClass}
               >
-                <img
-                  src={item.icon}
-                  className="w-5 h-5 min-w-[20px] object-contain"
-                  alt={item.name}
-                />
-                <span className={`whitespace-nowrap transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`}>
-                  {item.name}
-                </span>
+                <img src={item.icon} className="w-5 h-5 shrink-0" alt="" />
+                <span className="truncate">{item.name}</span>
               </NavLink>
             ))}
           </nav>
-        </aside>
 
-        {/* Main Content Placeholder - adjusts when sidebar is open on desktop */}
-        <main className={`flex-1 transition-all duration-300 ${isOpen ? "lg:ml-[240px]" : "ml-0"}`}>
-          {/* Yahan aapka content aayega */}
-        </main>
-      </div>
+          {/* ORGANIZATION DETAILS (Moved inside scroll for better UX on small screens) */}
+          <div className="mt-8 mb-4">
+            <div className="bg-[#FFF6F6] rounded-[14px] p-4 space-y-3 relative border border-red-50">
+              <button className="absolute right-3 top-3 w-7 h-7 flex items-center justify-center bg-white rounded-full shadow-sm text-red-600 hover:bg-red-50 transition-colors">
+                <span className="text-[14px]"><img src="/edit.svg" alt="" /></span>
+              </button>
+
+              <h4 className="text-[13px] font-bold text-[#202020] uppercase tracking-wider">
+                Organization Details
+              </h4>
+
+              <div className="space-y-2 text-[12px] text-gray-700">
+                <p className="flex items-center gap-2">
+                  <span className="opacity-70"><img src="/user.svg" alt="" /></span> <span className="font-medium">Yogendra Panchal</span>
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="opacity-70"><img src="/phone.svg" alt="" /></span> <span>+91 9876543210</span>
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="opacity-70"><img src="/mail.svg" alt="" /></span> <span className="truncate">info@ola.com</span>
+                </p>
+              </div>
+
+              <div className="mt-3 pt-3 border-t border-red-100/50 space-y-2 text-[12px] text-gray-700">
+                <p className="leading-relaxed">
+                  <span className="font-semibold text-[#202020]">Address:</span>{" "}
+                  Near MMRDA Grounds, Kolivery Village, MMRDA Area, Bandra Kurla Complex,
+                  Bandra East, Mumbai, Maharashtra 400051
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  <p><span className="font-semibold text-[#202020]">City:</span> Mumbai</p>
+                </div>
+                <p><span className="font-semibold text-[#202020]">State:</span> MH</p>
+                <p><span className="font-semibold text-[#202020]">GST:</span> XXXXXXXXXX</p>
+                <p><span className="font-semibold text-[#202020]">PAN:</span> XXXXXXXXXX</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
     </>
   );
 };

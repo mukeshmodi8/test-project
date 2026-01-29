@@ -1,63 +1,56 @@
 import React from "react";
 
 const Header = () => {
-  return (
-    <header className="h-20 lg:h-[92px] bg-white flex items-center justify-between px-4 lg:px-6 border-b border-[#E5E7EB] sticky top-0 z-30 w-full">
-      
-      {/* LEFT SPACER - Desktop पर साइडबार की जगह छोड़ता है, मोबाइल पर गायब */}
-      <div className="hidden lg:block lg:w-[240px]" />
+  const toggleSidebar = () => {
+    window.dispatchEvent(new Event("toggleSidebar"));
+  };
 
-      {/* SEARCH BAR - मोबाइल पर फ्लेक्सिबल बनाया गया है */}
-      <div className="flex flex-1 lg:flex-none items-center bg-[#EEF3F9] px-3 lg:px-5 py-2 rounded-full max-w-[580px] mx-2 lg:mx-4">
+  return (
+    <header className="h-20 lg:h-[92px] bg-white flex items-center justify-between px-4 lg:px-6 border-b border-[#E5E7EB] sticky top-0 z-30 w-full ">
+
+      {/* LEFT */}
+      <div className="flex items-center gap-2">
+        {/* MOBILE MENU */}
+        <button onClick={toggleSidebar} className="lg:hidden">
+          <img src="/menu.svg" alt="menu" className="w-6 h-6" />
+        </button>
+
+        <div className="hidden lg:block lg:w-[240px]" />
+      </div>
+
+      {/* SEARCH */}
+      <div className="flex flex-1 lg:flex-none items-center bg-[#EEF3F9] px-3 lg:px-5 py-2 rounded-full max-w-[580px] mx-2">
         <input
           type="text"
           placeholder="Search"
-          className="bg-transparent outline-none w-full text-sm placeholder-gray-500 min-w-[50px]"
+          className="bg-transparent outline-none w-full text-sm"
         />
-        <div className="ml-2 lg:ml-3 w-8 h-8 lg:w-9 lg:h-9 shrink-0 rounded-full bg-[#EAF1FB] flex items-center justify-center">
-          <img
-            src="/serchicon.svg"
-            className="w-4 h-4 lg:w-5 lg:h-5 text-[#202020]"
-            alt="search"
-          />
+        <div className="ml-2 w-8 h-8 rounded-full bg-[#EAF1FB] flex items-center justify-center">
+          <img src="/serchicon.svg" className="w-4 h-4" alt="search" />
         </div>
       </div>
 
-      {/* RIGHT ACTIONS */}
-      <div className="flex items-center gap-3 lg:gap-6 shrink-0">
-        {/* Notification */}
-        <div className="relative cursor-pointer">
-          <img
-            src="/Group 699.svg"
-            className="w-5 h-5 lg:w-6 lg:h-6"
-            alt="notification"
-          />
-          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 lg:w-4 lg:h-4 bg-red-600 text-white text-[8px] lg:text-[10px] rounded-full flex items-center justify-center">
+      {/* RIGHT */}
+      <div className="flex items-center gap-3 shrink-0">
+        <div className="relative">
+          <img src="/Group 699.svg" className="w-5 h-5" alt="notification" />
+          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-600 text-white text-[8px] rounded-full flex items-center justify-center">
             13
           </span>
         </div>
 
-        {/* Settings - मोबाइल पर छुपा सकते हैं या छोटा रख सकते हैं */}
         <img
           src="/Group 697.svg"
-          className="w-5 h-5 lg:w-6 lg:h-6 cursor-pointer hidden sm:block"
+          className="w-5 h-5 hidden sm:block"
           alt="settings"
         />
 
-        {/* PROFILE SECTION */}
-        <div className="flex items-center gap-2 lg:gap-3 cursor-pointer bg-white border border-[#E5E7EB] rounded-full px-2 lg:px-4 py-1.5 lg:py-2">
-          {/* PROFILE IMAGE WRAPPER */}
-          <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full border border-[#2C6032] flex items-center justify-center shrink-0">
-            <img
-              src="/user.png"
-              alt="profile"
-              className="w-6 h-6 lg:w-8 lg:h-8 rounded-full object-cover"
-            />
+        <div className="flex items-center gap-2 bg-white border rounded-full px-3 py-1.5">
+          <div className="w-8 h-8 rounded-full border border-[#2C6032] flex items-center justify-center">
+            <img src="/user.png" className="w-6 h-6 rounded-full" alt="user" />
           </div>
-
-          {/* NAME - मोबाइल पर पूरी तरह छुपा दिया है ताकि सर्च बार को जगह मिले */}
-          <div className="leading-4 hidden md:block">
-            <p className="text-sm font-semibold text-[#3D2B65] whitespace-nowrap">
+          <div className="hidden md:block">
+            <p className="text-sm font-semibold text-[#3D2B65]">
               Abhimanyu Rathi
             </p>
             <span className="text-xs text-[#BE202E]">@abrathi</span>
@@ -67,5 +60,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;
