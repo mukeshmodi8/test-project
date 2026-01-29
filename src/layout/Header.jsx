@@ -1,16 +1,17 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ setIsSidebarOpen }) => {
+
   const toggleSidebar = () => {
-    window.dispatchEvent(new Event("toggleSidebar"));
+    setIsSidebarOpen(prev => !prev);
   };
 
   return (
-    <header className="h-20 lg:h-[92px] bg-white flex items-center justify-between px-4 lg:px-6 border-b border-[#E5E7EB] sticky top-0 z-30 w-full ">
+    <header className="h-20 lg:h-[92px] bg-white flex items-center justify-between px-4 lg:px-6 border-b border-[#E5E7EB] sticky top-0 z-30 w-full">
 
       {/* LEFT */}
       <div className="flex items-center gap-2">
-        {/* MOBILE MENU */}
+        {/* MENU ICON */}
         <button onClick={toggleSidebar} className="lg:hidden">
           <img src="/menu.svg" alt="menu" className="w-6 h-6" />
         </button>
@@ -60,4 +61,5 @@ const Header = () => {
     </header>
   );
 };
+
 export default Header;

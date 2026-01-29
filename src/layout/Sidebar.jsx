@@ -17,12 +17,19 @@ const menuItems = [
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const scrollRef = useRef(null);
 
-  // मोबाइल पर बाहर क्लिक करने पर बंद करने के लिए
   const handleClose = () => {
     if (window.innerWidth < 1024) {
       setIsOpen(false);
     }
   };
+  const toggleSidebar = () => {
+    setIsOpen(prev => !prev);
+  };
+
+  const closeSidebar = () => {
+    setIsOpen(false);
+  };
+
 
   const linkClass = ({ isActive }) =>
     `flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300
@@ -30,25 +37,22 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
   return (
     <>
-      {/* MOBILE OVERLAY */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[80] lg:hidden transition-opacity"
-          onClick={handleClose}
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[80]"
+          onClick={closeSidebar}
         />
       )}
 
+
       <aside
         className={`fixed top-0 bottom-0 left-0 bg-white border-r border-gray-100 shadow-xl lg:shadow-none z-[90] transition-all duration-300 ease-in-out
-        ${isOpen ? "translate-x-0 w-[240px]" : "-translate-x-full lg:translate-x-0 lg:w-0"}
+       ${isOpen ? "translate-x-0 w-[240px]" : "-translate-x-full w-0"}
         flex flex-col overflow-hidden`}
       >
-        {/* LOGO SECTION */}
         <div className="p-5 h-20 flex items-center shrink-0 border-b border-gray-50">
           <img src="/Logo.svg" className="h-8 object-contain" alt="logo" />
         </div>
-
-        {/* SCROLLABLE MENU AREA */}
         <div
           ref={scrollRef}
           className="flex-1 overflow-y-auto no-scrollbar px-3 py-4 flex flex-col justify-between"
@@ -68,8 +72,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               </NavLink>
             ))}
           </nav>
-
-          {/* ORGANIZATION DETAILS (Moved inside scroll for better UX on small screens) */}
           <div className="mt-8 mb-4">
             <div className="bg-[#FFF6F6] rounded-[14px] p-4 space-y-3 relative border border-red-50">
               <button className="absolute right-3 top-3 w-7 h-7 flex items-center justify-center bg-white rounded-full shadow-sm text-red-600 hover:bg-red-50 transition-colors">

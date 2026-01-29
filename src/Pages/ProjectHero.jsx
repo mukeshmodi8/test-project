@@ -24,6 +24,11 @@ const ProjectHero = () => {
           alt="banner"
           className="w-full h-full object-cover"
         />
+
+        {/* BLACK OVERLAY */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        {/* CONTENT */}
         <div className="absolute left-3 right-3 sm:left-4 sm:right-4 md:left-8 md:right-8 bottom-3 sm:bottom-4 md:bottom-6 text-white flex items-end justify-between">
 
           {/* LEFT TEXT */}
@@ -39,18 +44,16 @@ const ProjectHero = () => {
           {/* RIGHT EDIT ICON */}
           <button
             className="
-      p-1 sm:p-1.5 md:p-2
-      bg-white/20 hover:bg-white/40
-      backdrop-blur-md
-      rounded-md sm:rounded-lg
-      transition-all
-      border border-white/30
-    "
+              p-1 sm:p-1.5 md:p-2
+              rounded-md sm:rounded-lg
+              transition-all
+              
+            "
           >
             <img
               src="/edit.svg"
               alt="edit"
-              className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5"
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 invert"
             />
           </button>
         </div>
