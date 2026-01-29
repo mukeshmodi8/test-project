@@ -2,13 +2,13 @@ import React from "react";
 
 const ProjectDetailsPage = () => {
     return (
-        <div className="bg-[#FFFFFF] p-6 min-h-screen">
+        <div className="bg-[#F9FAFB] md:p-6 p-4 min-h-screen">
             <div className="max-w-[1400px] mx-auto space-y-6">
 
-                {/* TABS */}
-                <div className="flex flex-wrap gap-3 text-[15px] text-[#3A3A3A]">
-                    <button className="flex items-center gap-2 bg-[#C22D34] text-white px-5 py-2 rounded-full text-sm font-medium">
-                        <img src="/Layer_1.svg" className="w-4 h-4 invert" />
+                {/* TABS - Horizontal Scroll for Mobile */}
+                <div className="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar">
+                    <button className="flex items-center gap-2 shrink-0 bg-[#C22D34] text-white px-5 py-2 rounded-full text-sm font-medium transition-colors">
+                        <img src="/Layer_1.svg" className="w-4 h-4 invert" alt="overview" />
                         Overview
                     </button>
 
@@ -19,24 +19,24 @@ const ProjectDetailsPage = () => {
                     ].map((tab) => (
                         <button
                             key={tab.label}
-                            className="flex items-center gap-2 bg-white border border-[#E5E7EB] px-5 py-2 rounded-full text-sm text-[#3A3A3A] hover:bg-gray-50"
+                            className="flex items-center gap-2 shrink-0 bg-white border border-[#E5E7EB] px-5 py-2 rounded-full text-sm text-[#3A3A3A] hover:bg-gray-50 transition-colors"
                         >
-                            <img src={tab.icon} className="w-4 h-4 opacity-60 text-[#3A3A3A]" />
-                            {tab.label}
+                            <img src={tab.icon} className="w-4 h-4 opacity-60" alt={tab.label} />
+                            <span className="whitespace-nowrap">{tab.label}</span>
                         </button>
                     ))}
                 </div>
 
                 {/* MAIN GRID */}
-                <div className="grid grid-cols-12 gap-6 items-stretch">
+                <div className="grid grid-cols-12 gap-6">
 
-                    {/* OVERVIEW */}
-                    <div className="col-span-12 lg:col-span-6 bg-white rounded-[16px] border border-[#E5E7EB] flex flex-col h-full">
+                    {/* OVERVIEW CARD */}
+                    <div className="col-span-12 lg:col-span-6 bg-white rounded-[16px] border border-[#E5E7EB] flex flex-col shadow-sm">
                         <div className="px-6 py-4 border-b border-[#E5E7EB]">
                             <h2 className="text-sm font-semibold text-gray-800">Overview</h2>
                         </div>
 
-                        <div className="p-6 space-y-4 text-sm flex-1 text-[15px]">
+                        <div className="p-6 space-y-4 flex-1">
                             {[
                                 ["Project Start Date", "01/03/2025"],
                                 ["Project ID", "ME0001"],
@@ -51,57 +51,53 @@ const ProjectDetailsPage = () => {
                                 ["Email", "yp@gmail.com"],
                                 ["Phone no.", "+91 9876543210"],
                             ].map(([label, value]) => (
-                                <div key={label} className="flex justify-between items-center">
-                                    <span className="text-[#1F2937] font-medium">{label}</span>
-                                    <span className="text-[#6B7280]">{value}</span>
+                                <div key={label} className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4 border-b border-gray-50 pb-2 last:border-0 last:pb-0">
+                                    <span className="text-[#6B7280] text-sm">{label}</span>
+                                    <span className="text-[#1F2937] text-sm font-medium">{value}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* MAP */}
-                    <div className="col-span-12 lg:col-span-3 bg-white rounded-[16px] border border-[#E5E7EB] p-4 flex flex-col h-full">
-                        <div className="rounded-[12px] overflow-hidden h-[280px]">
+                    {/* MAP CARD */}
+                    <div className="col-span-12 md:col-span-6 lg:col-span-3 bg-white rounded-[16px] border border-[#E5E7EB] p-4 flex flex-col shadow-sm">
+                        <div className="rounded-[12px] overflow-hidden h-[240px] lg:h-[280px] border border-gray-100">
                             <iframe
                                 title="map"
-                                className="w-full h-full"
-                                src="https://www.google.com/maps?q=19.0693,72.8625&z=14&output=embed"
+                                className="w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.796324832442!2d72.8603276!3d19.072671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8e630f9d977%3A0x6a099f663f760f38!2sBandra%20Kurla%20Complex!5e0!3m2!1sen!2sin!4v1691234567890!5m2!1sen!2sin"
                                 loading="lazy"
                             />
                         </div>
 
-                        <div className="mt-4 text-sm flex-1">
-                            <h4 className="text-xs font-semibold text-gray-500 mb-1">
-                                Address
-                            </h4>
-                            <p className="text-gray-700 mb-4">
-                                Near MMRDA Grounds, Kolivery Village, MMRDA Area,
-                                Bandra Kurla Complex, Bandra East, Mumbai,
-                                Maharashtra 400051
+                        <div className="mt-4 flex-1">
+                            <h4 className="text-[10px] uppercase tracking-wider font-bold text-gray-400 mb-2">Address</h4>
+                            <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                                Near MMRDA Grounds, Kolivery Village, BKC, Bandra East, Mumbai, Maharashtra 400051
                             </p>
 
-                            <div className="text-xs space-y-2">
+                            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-50">
                                 <div>
-                                    <p className="font-medium">Latitude</p>
-                                    <p className="text-gray-400">19.0693124375</p>
+                                    <p className="text-[10px] uppercase font-bold text-gray-400">Latitude</p>
+                                    <p className="text-gray-700 text-xs font-mono">19.0693124375</p>
                                 </div>
                                 <div>
-                                    <p className="font-medium">Longitude</p>
-                                    <p className="text-gray-400">72.8625163181</p>
+                                    <p className="text-[10px] uppercase font-bold text-gray-400">Longitude</p>
+                                    <p className="text-gray-700 text-xs font-mono">72.8625163181</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* NFT */}
-                    <div className="col-span-12 lg:col-span-3 bg-white rounded-[16px] border border-[#E5E7EB] p-6 flex flex-col h-full">
-                        <h4 className="text-xs font-semibold text-gray-500 mb-3">NFT</h4>
+                    {/* NFT CARD */}
+                    <div className="col-span-12 md:col-span-6 lg:col-span-3 bg-white rounded-[16px] border border-[#E5E7EB] p-6 flex flex-col shadow-sm">
+                        <h4 className="text-[10px] uppercase tracking-wider font-bold text-gray-400 mb-4">Project NFT</h4>
 
-                        <div className="flex-1 flex items-center justify-center rounded-[12px] border border-dashed border-[#E5E7EB]">
+                        <div className="flex-1 flex items-center justify-center rounded-[12px] border-2 border-dashed border-gray-100 bg-gray-50 p-4 min-h-[200px]">
                             <img
                                 src="/bharat.svg"
                                 alt="NFT"
-                                className="max-h-full object-contain"
+                                className="w-full h-auto max-h-[250px] object-contain hover:scale-105 transition-transform duration-300"
                             />
                         </div>
                     </div>

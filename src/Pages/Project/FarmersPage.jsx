@@ -14,77 +14,70 @@ const farmers = Array.from({ length: 10 }, (_, i) => ({
 
 const FarmersPage = () => {
     return (
-        <div className="bg-[#FFFFFF] p-4 md:p-6 min-h-screen font-sans">
-            <div className="max-w-[1600px] mx-auto grid grid-cols-12 gap-6 items-start">
+        <div className="bg-[#F9FAFB] p-3 md:p-6 min-h-screen font-sans">
+            <div className="max-w-[1600px] mx-auto grid grid-cols-12 gap-4 md:gap-6 items-start">
 
-                {/* Left Side: Map Section */}
-                <div className="col-span-12 lg:col-span-4 bg-white rounded-[16px] border border-[#E5E7EB] p-3 shadow-sm">
-                    <div className="flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden h-[450px]">
+                {/* Left Side: Map Section - Mobile par stack ho jayega */}
+                <div className="col-span-12 lg:col-span-4 bg-white rounded-[16px] border border-[#E5E7EB] p-3 shadow-sm order-2 lg:order-1">
+                    <div className="flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden h-[300px] md:h-[450px]">
                         <img src="/Frame 740.svg" alt="Map" className="max-w-full max-h-full object-contain" />
                     </div>
                 </div>
 
                 {/* Right Side: Table Section */}
-                <div className="col-span-12 lg:col-span-8 bg-white rounded-[16px] border border-[#E5E7EB] shadow-sm overflow-hidden">
+                <div className="col-span-12 lg:col-span-8 bg-white rounded-[16px] border border-[#E5E7EB] shadow-sm overflow-hidden order-1 lg:order-2">
 
                     {/* Compact Header */}
-                    <div className="flex justify-between items-center px-5 py-3 border-b border-gray-50">
+                    <div className="flex flex-wrap justify-between items-center px-4 md:px-5 py-3 border-b border-gray-50 gap-3">
                         <div className="flex items-center gap-2">
-                            <div className="p-1 border border-gray-200 rounded-full">
-                                <img src="Iconsss.svg" alt="" />
+                            <div className="p-1 border border-gray-200 rounded-full shrink-0">
+                                <img src="Iconsss.svg" alt="icon" className="w-4 h-4" />
                             </div>
-                            <h2 className="font-semibold text-gray-700 text-sm">Farmers</h2>
+                            <h2 className="font-semibold text-gray-700 text-sm md:text-base">Farmers List</h2>
                         </div>
 
                         <div className="flex items-center gap-3">
-                            <button className="text-gray-400 hover:text-gray-600">
-                            </button>
-                            <div className="flex items-center gap-3">
-                                <button className="text-gray-400 hover:text-gray-600">
-                                    <img src="menu.svg" alt="" />
-                                </button>
-                                <div className="flex items-center gap-1.5 border rounded-[40px] px-2 py-1 text-[10px] text-gray-200 font-medium bg-white shadow-sm">
-                                    <img src="Iconss.svg" alt="" />
-                                    <span className="text-gray-500">2025</span>
-                                </div>
+                            <div className="flex items-center gap-1.5 border rounded-full px-3 py-1 text-[11px] text-gray-500 font-medium bg-white shadow-sm border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors">
+                                <img src="Iconss.svg" alt="calendar" className="w-3 h-3" />
+                                <span>2025</span>
                             </div>
+                            <button className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors">
+                                <img src="menu.svg" alt="menu" className="w-5 h-5" />
+                            </button>
                         </div>
                     </div>
 
-                    <div className="px-5 pb-4 overflow-x-auto">
-                        <table className="w-full text-left border-separate border-spacing-0">
-                            <thead className="bg-[#BE202E] text-white">
+                    {/* Table Container with Horizontal Scroll */}
+                    <div className="overflow-x-auto no-scrollbar">
+                        <table className="w-full text-left border-separate border-spacing-0 min-w-[800px]">
+                            <thead className="bg-[#BE202E] text-white sticky top-0 z-10">
                                 <tr>
-                                    <th className="px-3 py-2 font-medium text-[14px] uppercase tracking-wider rounded-tl-[8px]">#</th>
-                                    <th className="px-3 py-2 font-medium text-[14px] uppercase tracking-wider">Distributor ID</th>
-                                    <th className="px-3 py-2 font-medium text-[14px] uppercase tracking-wider">Farmer ID</th>
-                                    <th className="px-3 py-2 font-medium text-[14px] uppercase tracking-wider">Farmer</th>
-                                    <th className="px-3 py-2 font-medium text-[14px] uppercase tracking-wider">WhatsApp No</th>
-                                    <th className="px-3 py-2 font-medium text-[14px] uppercase tracking-wider text-nowrap">Phone No.</th>
-                                    <th className="px-3 py-2 font-medium text-[14px] uppercase tracking-wider">Email</th>
-                                    <th className="px-3 py-2 font-medium text-[14px] uppercase tracking-wider text-center">Total Cattle</th>
-                                    <th className="px-3 py-2 font-medium text-[14px] uppercase tracking-wider text-center rounded-tr-[8px]">Status</th>
+                                    <th className="px-4 py-3 font-medium text-[12px] md:text-[13px] uppercase tracking-wider rounded-tl-[16px]">#</th>
+                                    <th className="px-4 py-3 font-medium text-[12px] md:text-[13px] uppercase tracking-wider">Distributor ID</th>
+                                    <th className="px-4 py-3 font-medium text-[12px] md:text-[13px] uppercase tracking-wider">Farmer ID</th>
+                                    <th className="px-4 py-3 font-medium text-[12px] md:text-[13px] uppercase tracking-wider">Farmer Name</th>
+                                    <th className="px-4 py-3 font-medium text-[12px] md:text-[13px] uppercase tracking-wider">WhatsApp</th>
+                                    <th className="px-4 py-3 font-medium text-[12px] md:text-[13px] uppercase tracking-wider">Email</th>
+                                    <th className="px-4 py-3 font-medium text-[12px] md:text-[13px] uppercase tracking-wider text-center">Cattle</th>
+                                    <th className="px-4 py-3 font-medium text-[12px] md:text-[13px] uppercase tracking-wider text-center rounded-tr-[16px]">Status</th>
                                 </tr>
                             </thead>
 
-                            <tbody className="border-x border-b border-gray-100">
-                                {farmers.map((f) => (
-                                    <tr key={f.id} className="hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0">
-                                        <td className="px-3 py-2 text-[10px] text-gray-500">
-                                            <div className="flex items-center gap-1.5">
-                                                <svg className="w-2 h-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-                                                {f.id}
-                                            </div>
+                            <tbody className="bg-white">
+                                {farmers.map((f, idx) => (
+                                    <tr key={f.id} className="hover:bg-gray-50/80 transition-colors border-b border-gray-100 last:border-0">
+                                        <td className="px-4 py-3 text-[12px] text-gray-400">
+                                            {f.id < 10 ? `0${f.id}` : f.id}
                                         </td>
-                                        <td className="px-3 py-2 text-[10px] font-bold text-gray-800">{f.distributorId}</td>
-                                        <td className="px-3 py-2 text-[10px] font-bold text-gray-800">{f.farmerId}</td>
-                                        <td className="px-3 py-2 text-[10px] text-gray-600">{f.name}</td>
-                                        <td className="px-3 py-2 text-[10px] text-gray-600">{f.whatsapp}</td>
-                                        <td className="px-3 py-2 text-[10px] text-gray-600">{f.phone}</td>
-                                        <td className="px-3 py-2 text-[10px] text-gray-600 truncate max-w-[120px]">{f.email}</td>
-                                        <td className="px-3 py-2 text-[10px] text-gray-600 text-center">{f.cattle}</td>
-                                        <td className="px-3 py-2 text-center">
-                                            <span className="inline-block px-3 py-0.5 rounded-full text-[9px] font-bold bg-[#EBF5FF] text-[#3B82F6] border border-blue-100">
+                                        <td className="px-4 py-3 text-[12px] font-bold text-gray-800">{f.distributorId}</td>
+                                        <td className="px-4 py-3 text-[12px] font-bold text-gray-800">{f.farmerId}</td>
+                                        <td className="px-4 py-3 text-[12px] text-gray-600 font-medium">{f.name}</td>
+                                        <td className="px-4 py-3 text-[12px] text-gray-600">{f.whatsapp}</td>
+                                        <td className="px-4 py-3 text-[12px] text-gray-600 truncate max-w-[150px]">{f.email}</td>
+                                        <td className="px-4 py-3 text-[12px] text-gray-600 text-center font-semibold">{f.cattle}</td>
+                                        <td className="px-4 py-3 text-center">
+                                            <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-green-50 text-green-600 border border-green-100">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span>
                                                 {f.status}
                                             </span>
                                         </td>
@@ -92,6 +85,15 @@ const FarmersPage = () => {
                                 ))}
                             </tbody>
                         </table>
+                    </div>
+
+                    {/* Mobile Pagination / Info Footer */}
+                    <div className="px-5 py-3 border-t border-gray-100 bg-gray-50/50 flex justify-between items-center">
+                        <span className="text-[11px] text-gray-400">Showing {farmers.length} Farmers</span>
+                        <div className="flex gap-2">
+                             <button className="px-2 py-1 text-[11px] border rounded hover:bg-white transition-colors">Prev</button>
+                             <button className="px-2 py-1 text-[11px] border rounded hover:bg-white transition-colors">Next</button>
+                        </div>
                     </div>
                 </div>
             </div>

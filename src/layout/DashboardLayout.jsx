@@ -1,4 +1,4 @@
-import Sidebar from "./Sidebar";
+// import Sidebar from "./Sidebar";
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
 import ProjectHero from "../Pages/ProjectHero";
@@ -10,7 +10,7 @@ import ManufacturersDistributorPage from "../Pages/Project/ManufacturersDistribu
 const DashboardLayout = () => {
   return (
     <div className="flex h-screen bg-[#FFFFFF]">
-      <Sidebar />
+      {/* <Sidebar /> */}
 
       <div className="flex flex-col flex-1">
         <Header />

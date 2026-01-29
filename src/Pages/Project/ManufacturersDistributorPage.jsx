@@ -113,14 +113,14 @@ const ManufacturersDistributorPage = () => {
                         <table className="w-full text-left border-separate border-spacing-0">
                             <thead className="bg-[#BD2831] text-white">
                                 <tr>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider rounded-tl-[8px]">#</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider">Distributor ID</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider">Distributor Name</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider">Registration No.</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider">Email</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider">Phone No.</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider">Status</th>
-                                    <th className="px-3 py-2 font-medium text-[10px] uppercase tracking-wider text-center rounded-tr-[8px]">Action</th>
+                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider rounded-tl-[8px]">#</th>
+                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Distributor ID</th>
+                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Distributor Name</th>
+                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Registration No.</th>
+                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Email</th>
+                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Phone No.</th>
+                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider">Status</th>
+                                    <th className="px-3 py-2 font-medium text-[15px] uppercase tracking-wider text-center rounded-tr-[8px]">Action</th>
                                 </tr>
                             </thead>
                             <tbody className="border-x border-b border-gray-100">
