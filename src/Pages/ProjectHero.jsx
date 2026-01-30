@@ -2,20 +2,18 @@ import React from "react";
 
 const ProjectHero = () => {
   return (
-    <div className="w-full px-2 sm:px-3 md:px-4 lg:px-6 py-2 sm:py-3 md:py-5">
+    <div className="w-full md:p-2 px-4">
       <div
         className="
           relative w-full
-          h-[140px]
-          xs:h-[160px]
-          sm:h-[180px]
-          md:h-[220px]
-          lg:h-[260px]
+          h-[110px]
+          sm:h-[135px]
+          md:h-[165px]
+          lg:h-[190px]
           rounded-t-xl
           sm:rounded-t-2xl
           md:rounded-t-[24px]
           overflow-hidden
-          shadow-sm
         "
       >
         {/* IMAGE */}
@@ -25,41 +23,28 @@ const ProjectHero = () => {
           className="w-full h-full object-cover"
         />
 
-        {/* BLACK OVERLAY */}
+        {/* OVERLAY */}
         <div className="absolute inset-0 bg-black/40" />
 
         {/* CONTENT */}
-        <div className="absolute left-3 right-3 sm:left-4 sm:right-4 md:left-8 md:right-8 bottom-3 sm:bottom-4 md:bottom-6 text-white flex items-end justify-between">
-
-          {/* LEFT TEXT */}
+        <div className="absolute left-4 right-4 md:left-8 md:right-8 bottom-3 md:bottom-4 text-white flex items-end justify-between">
           <div>
-            <h1 className="text-xl sm:text-2xl md:text-4xl font-bold tracking-tight leading-none">
+            <h1 className="text-lg sm:text-xl md:text-3xl font-bold leading-none">
               CH4OW
             </h1>
-            <p className="text-[11px] sm:text-sm md:text-base mt-0.5 font-medium opacity-90">
+            <p className="text-xs sm:text-sm opacity-90 mt-0.5">
               ME0001
             </p>
           </div>
 
-          {/* RIGHT EDIT ICON */}
-          <button
-            className="
-              p-1 sm:p-1.5 md:p-2
-              rounded-md sm:rounded-lg
-              transition-all
-              
-            "
-          >
-            <img
-              src="/edit.svg"
-              alt="edit"
-              className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 invert"
-            />
+          <button className="p-1.5 rounded-lg bg-black/30 hover:bg-black/40 transition">
+            <img src="/edit.svg" className="w-4 h-4 invert" alt="edit" />
           </button>
         </div>
       </div>
     </div>
   );
 };
+
 
 export default ProjectHero;
